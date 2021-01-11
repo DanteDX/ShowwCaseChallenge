@@ -6,7 +6,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const darkTheme = createMuiTheme({
   palette: {
-    type: "dark"
+    type: "light"
   }
 });
 function App():JSX.Element {
