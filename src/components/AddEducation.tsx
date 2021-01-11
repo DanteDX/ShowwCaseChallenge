@@ -18,6 +18,11 @@ export interface AddEducationProps extends RouteComponentProps{
 
 }
 const _AddEducation: React.FunctionComponent<AddEducationProps> = ({ history, clearNameAction,nameState,educations }) => {
+  React.useEffect(() => {
+    if (nameState.name.length === 0) {
+      history.push("/");
+    }
+  }, []);
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     clearNameAction();
     history.push("/");
@@ -26,7 +31,7 @@ const _AddEducation: React.FunctionComponent<AddEducationProps> = ({ history, cl
     <div>
       Add Education page
       <h4>Welcome {nameState.name} to Add Education page</h4>
-      <Button variant="contained" onClick={e => handleClick(e)}>Clear Name</Button>
+      <Button variant="contained" onClick={e => handleClick(e)}>Reset Name</Button>
       <EducationModal />
       <Grid container spacing={3} direction="row">
         <Grid item xs={4}>

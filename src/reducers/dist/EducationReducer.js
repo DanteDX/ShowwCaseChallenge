@@ -15,8 +15,8 @@ var initialState = [{
         schoolName: "",
         degree: "",
         fieldOfStudy: "",
-        startYear: "",
-        endYear: "",
+        startYear: new Date(),
+        endYear: new Date(),
         grade: "",
         description: ""
     }];

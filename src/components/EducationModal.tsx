@@ -64,12 +64,8 @@ const _EducationModal:React.FunctionComponent<EducationState> = ({addEducationAc
       >
           <TextField required color="primary" variant="outlined" onChange={e => setCountryName(e.currentTarget.value) } type="text" label="Country Name" />
         <br /><br />
-        <select id="schoolName" onChange={e => setSchoolName(e.currentTarget.value)}>
-          <option value="">Select a school</option>
-          <option value="Gregory">St. Gregory's High School</option>
-          <option value="Xaviers">Xaviers</option>
-          <option value="Joseph">Joseph</option>
-        </select>
+        <TextField required color="primary" variant="outlined" onChange={e => setSchoolName(e.currentTarget.value) } type="text" label="School Name" />
+
           <br /><br/>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker

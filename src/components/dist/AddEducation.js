@@ -11,6 +11,11 @@ var SideEducation_1 = require("./SideEducation");
 var DetailedEducation_1 = require("./DetailedEducation");
 var _AddEducation = function (_a) {
     var history = _a.history, clearNameAction = _a.clearNameAction, nameState = _a.nameState, educations = _a.educations;
+    react_1["default"].useEffect(function () {
+        if (nameState.name.length === 0) {
+            history.push("/");
+        }
+    }, []);
     var handleClick = function (e) {
         clearNameAction();
         history.push("/");
@@ -21,7 +26,7 @@ var _AddEducation = function (_a) {
             "Welcome ",
             nameState.name,
             " to Add Education page"),
-        react_1["default"].createElement(core_1.Button, { variant: "contained", onClick: function (e) { return handleClick(e); } }, "Clear Name"),
+        react_1["default"].createElement(core_1.Button, { variant: "contained", onClick: function (e) { return handleClick(e); } }, "Reset Name"),
         react_1["default"].createElement(EducationModal_1.EducationModal, null),
         react_1["default"].createElement(core_1.Grid, { container: true, spacing: 3, direction: "row" },
             react_1["default"].createElement(core_1.Grid, { item: true, xs: 4 },

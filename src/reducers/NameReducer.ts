@@ -2,7 +2,7 @@ import { ActionTypes } from "../actions/ActionsTypes";
 import { addNameDispatch } from "../actions/NameActions";
 
 export interface NameInterface{
-  name?: string;
+  name: string;
 }
 
 let initialState = { name: "" };
