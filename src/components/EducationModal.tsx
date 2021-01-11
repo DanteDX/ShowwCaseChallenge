@@ -4,8 +4,16 @@ import 'date-fns';
 import { TextField, Button,MenuItem } from "@material-ui/core";
 import { MuiPickersUtilsProvider, KeyboardDatePicker} from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
+import { connect } from "react-redux";
+import { addEducationAction } from "../actions/EducationActions";
+import { EducationInterface } from "../reducers/EducationReducer";
 
-export const EducationModal = () => {
+interface EducationState{
+  addEducationAction: Function;
+}
+
+const _EducationModal:React.FunctionComponent<EducationState> = ({addEducationAction}) => {
+  
   const [modalOpen, setModalOpen] = React.useState(false);
   const customStyles = {
     content: {
@@ -30,6 +38,22 @@ export const EducationModal = () => {
   const handleEndingDateChange = (date: Date | null) => {
     setSelectedEndingDate(date);
   };
+  const submitHandler = (e?: React.MouseEvent<HTMLElement>) => {
+    const details:EducationInterface = {
+      id: 10,
+      country: countryName,
+      schoolName,
+      degree: Degree,
+      fieldOfStudy: fieldName,
+      startYear: selectedStartingDate,
+      endYear: selectedEndingDate,
+      grade: Grade,
+      description: ""
+    };
+    addEducationAction(details);
+    alert('Submitted');
+    setModalOpen(false);
+  }
   return (
     <div>
       <Modal
@@ -83,9 +107,12 @@ export const EducationModal = () => {
           <br/><br/>
           <TextField required color="primary" variant="outlined" type="text" label="Grade" onChange={e => setGrade(e.currentTarget.value)}/>
           <br/><br/>
-          <Button variant="contained" color="primary" onClick={e => setModalOpen(false)}>Add Education</Button>
+        <Button variant="contained" color="secondary" onClick={e => setModalOpen(false)}>Cancel</Button>
+        <Button variant="contained" color="primary" onClick={e => submitHandler(e)}>Add Education</Button>
       </Modal>
       <button onClick={e => setModalOpen(true)}>Open Modal</button>
     </div>
   )
 }
+
+export const EducationModal = connect(null, { addEducationAction })(_EducationModal);

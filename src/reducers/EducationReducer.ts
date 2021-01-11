@@ -7,8 +7,8 @@ export interface EducationInterface{
   schoolName: string;
   degree: string;
   fieldOfStudy: string;
-  startYear: string;
-  endYear:string;
+  startYear: (Date | string | null);
+  endYear: (Date | string | null);
   grade: string;
   description: string;
 }
