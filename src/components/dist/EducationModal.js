@@ -83,6 +83,6 @@ var _EducationModal = function (_a) {
             react_1["default"].createElement("br", null),
             react_1["default"].createElement(core_1.Button, { variant: "contained", color: "secondary", onClick: function (e) { return setModalOpen(false); } }, "Cancel"),
             react_1["default"].createElement(core_1.Button, { variant: "contained", color: "primary", onClick: function (e) { return submitHandler(e); } }, "Add Education")),
-        react_1["default"].createElement("button", { onClick: function (e) { return setModalOpen(true); } }, "Open Modal")));
+        react_1["default"].createElement(core_1.Button, { variant: "contained", color: "primary", onClick: function (e) { return setModalOpen(true); } }, "ADD EDUCATION")));
 };
 exports.EducationModal = react_redux_1.connect(null, { addEducationAction: EducationActions_1.addEducationAction })(_EducationModal);
