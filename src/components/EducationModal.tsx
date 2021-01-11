@@ -110,7 +110,7 @@ const _EducationModal:React.FunctionComponent<EducationState> = ({addEducationAc
         <Button variant="contained" color="secondary" onClick={e => setModalOpen(false)}>Cancel</Button>
         <Button variant="contained" color="primary" onClick={e => submitHandler(e)}>Add Education</Button>
       </Modal>
-      <button onClick={e => setModalOpen(true)}>Open Modal</button>
+      <Button variant="contained" color="primary" onClick={e => setModalOpen(true)}>ADD EDUCATION</Button>
     </div>
   )
 }
