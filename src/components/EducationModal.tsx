@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import React from "react";
 import 'date-fns';
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button,MenuItem } from "@material-ui/core";
 import { MuiPickersUtilsProvider, KeyboardDatePicker} from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 
@@ -21,9 +21,14 @@ export const EducationModal = () => {
   const [schoolName, setSchoolName] = React.useState("");
   const [fieldName, setFieldName] = React.useState("");
   const [Grade, setGrade] = React.useState("");
-  const [selectedDate, setSelectedDate] = React.useState<Date | null>(new Date());
-  const handleDateChange = (date: Date | null) => {
-    setSelectedDate(date);
+  const [Degree, setDegree] = React.useState("");
+  const [selectedStartingDate, setSelectedStartingDate] = React.useState<Date | null>(new Date());
+  const [selectedEndingDate, setSelectedEndingDate] = React.useState<Date | null>(new Date());
+  const handleStartingDateChange = (date: Date | null) => {
+    setSelectedStartingDate(date);
+  };
+  const handleEndingDateChange = (date: Date | null) => {
+    setSelectedEndingDate(date);
   };
   return (
     <div>
@@ -32,12 +37,12 @@ export const EducationModal = () => {
         style={customStyles}
       >
           <TextField required color="primary" variant="outlined" onChange={e => setCountryName(e.currentTarget.value) } type="text" label="Country Name" />
-          <br /><br/>
-          <select required onChange={e => setSchoolName(e.currentTarget.value) } id="schoolName" name="schoolName">
-            <option value="Gregory">Gregory</option>
-            <option value="Xaviers">Xaviers</option>
-            <option value="Josephs">Josephs</option>
-          </select>
+        <br /><br />
+        <TextField helperText="Please select your school" color="primary" variant="outlined" select required label="Select a school" onChange={e => setSchoolName(e.currentTarget.value)}>
+          <MenuItem value="Gregory">St. Gregory's High School</MenuItem>
+          <MenuItem value="Xaviers">Xaviers</MenuItem>
+          <MenuItem value="Joseph">Joseph</MenuItem>
+        </TextField>
           <br /><br/>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
@@ -48,8 +53,8 @@ export const EducationModal = () => {
           margin="normal"
           id="date-picker-inline"
           label="Starting Date"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={selectedStartingDate}
+          onChange={handleStartingDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
@@ -64,8 +69,8 @@ export const EducationModal = () => {
           margin="normal"
           id="date-picker-inline"
           label="Ending Date"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={selectedEndingDate}
+          onChange={handleEndingDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
@@ -73,10 +78,12 @@ export const EducationModal = () => {
         </MuiPickersUtilsProvider>
         <br/><br/>
           <TextField required color="primary" variant="outlined" onChange={e => setFieldName(e.currentTarget.value)} type="text" label="Field Of Study"/>
+        <br /><br />
+        <TextField required color="primary" variant="outlined" onChange={e => setDegree(e.currentTarget.value)} type="text" label="Degree"/>
           <br/><br/>
-          <TextField color="primary" variant="outlined" type="text" label="Grade" onChange={e => setGrade(e.currentTarget.value)}/>
+          <TextField required color="primary" variant="outlined" type="text" label="Grade" onChange={e => setGrade(e.currentTarget.value)}/>
           <br/><br/>
-          <Button variant="contained" color="primary" onClick={e => setModalOpen(false)}>Close Modal</Button>
+          <Button variant="contained" color="primary" onClick={e => setModalOpen(false)}>Add Education</Button>
       </Modal>
       <button onClick={e => setModalOpen(true)}>Open Modal</button>
     </div>
