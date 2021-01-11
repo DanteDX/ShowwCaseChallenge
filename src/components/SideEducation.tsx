@@ -15,10 +15,11 @@ export const SideEducation: React.FunctionComponent<SideEducationState> = ({ edu
     )
   });
   return (
-    <p>
-      <Card variant="outlined" raised={true}>
-        {EducationList}
+    <>
+      <p>All Schools</p>
+      <Card raised={true}>
+        {EducationList.slice(1,EducationList.length)}
       </Card>
-    </p>
+    </>
   )
 }

@@ -6,11 +6,16 @@ interface DetailedState{
 }
 
 export const DetailedEducation: React.FunctionComponent<DetailedState> = ({ educations }) => {
-  return (
-    <Card variant="outlined" raised={true}>
+  const CardList = educations.map(eachEducation => (
+    <Card raised={true}>
       <CardContent>
-        <p>This is Detailed Education</p>
+        <p>{eachEducation.schoolName}</p>
       </CardContent>
     </Card>
+  ));
+  return (
+    <div>
+    {CardList.slice(1,CardList.length)}
+    </div>
   )
 }
