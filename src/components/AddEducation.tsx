@@ -28,12 +28,12 @@ const _AddEducation: React.FunctionComponent<AddEducationProps> = ({ history, cl
       <h4>Welcome {nameState.name} to Add Education page</h4>
       <Button variant="contained" onClick={e => handleClick(e)}>Clear Name</Button>
       <EducationModal />
-      <Grid container spacing={3} direction={column}>
+      <Grid container spacing={3} direction="column">
         <Grid item xs={4}>
           <SideEducation educations={educations}/>
         </Grid>
-        <Grid item container xs={6} direction={row}>
-          <DetailedEducation educations={education}/>
+        <Grid item container xs={6} direction="row">
+          <DetailedEducation educations={educations}/>
         </Grid>
       </Grid>
     </div>
