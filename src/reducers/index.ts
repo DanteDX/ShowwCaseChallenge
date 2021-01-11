@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { addNameReducer } from "./addNameReducer";
+import {NameReducer } from "./NameReducer";
 
 export interface StoreState{
   name: string;
@@ -8,5 +8,5 @@ export interface StoreState{
 
 // we have to put the store state generic here
 export default combineReducers({
-    addNameReducer
+    NameReducer
 });
