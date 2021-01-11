@@ -2,6 +2,7 @@ import { ActionTypes } from "../actions/ActionsTypes";
 import { EducationDispatch } from "../actions/EducationActions";
 
 export interface EducationInterface{
+  country: string;
   id: number;
   schoolName: string;
   degree: string;
@@ -13,7 +14,8 @@ export interface EducationInterface{
 }
 
 let initialState = [{
-  id:0,
+  id: 0,
+  country:"",
   schoolName: "",
   degree: "",
   fieldOfStudy: "",
