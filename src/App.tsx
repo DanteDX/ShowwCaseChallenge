@@ -1,3 +1,4 @@
+import React from "react";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Landing } from "./components/Landing";
@@ -9,7 +10,7 @@ const darkTheme = createMuiTheme({
     type: "light"
   }
 });
-function App():JSX.Element {
+function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Router>
