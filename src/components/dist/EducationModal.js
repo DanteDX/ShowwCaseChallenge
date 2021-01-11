@@ -10,7 +10,7 @@ var date_fns_1 = require("@date-io/date-fns");
 var react_redux_1 = require("react-redux");
 var EducationActions_1 = require("../actions/EducationActions");
 var _EducationModal = function (_a) {
-    var addEducationAction = _a.addEducationAction;
+    var addEducationAction = _a.addEducationAction, educations = _a.educations;
     var _b = react_1["default"].useState(false), modalOpen = _b[0], setModalOpen = _b[1];
     var customStyles = {
         content: {
@@ -37,7 +37,7 @@ var _EducationModal = function (_a) {
     };
     var submitHandler = function (e) {
         var details = {
-            id: 10,
+            id: educations.length + 1,
             country: countryName,
             schoolName: schoolName,
             degree: Degree,
@@ -48,7 +48,7 @@ var _EducationModal = function (_a) {
             description: ""
         };
         addEducationAction(details);
-        alert('Submitted');
+        // alert('Submitted');
         setModalOpen(false);
     };
     return (react_1["default"].createElement("div", null,
@@ -56,10 +56,11 @@ var _EducationModal = function (_a) {
             react_1["default"].createElement(core_1.TextField, { required: true, color: "primary", variant: "outlined", onChange: function (e) { return setCountryName(e.currentTarget.value); }, type: "text", label: "Country Name" }),
             react_1["default"].createElement("br", null),
             react_1["default"].createElement("br", null),
-            react_1["default"].createElement(core_1.TextField, { helperText: "Please select your school", color: "primary", variant: "outlined", select: true, required: true, label: "Select a school", onChange: function (e) { return setSchoolName(e.currentTarget.value); } },
-                react_1["default"].createElement(core_1.MenuItem, { value: "Gregory" }, "St. Gregory's High School"),
-                react_1["default"].createElement(core_1.MenuItem, { value: "Xaviers" }, "Xaviers"),
-                react_1["default"].createElement(core_1.MenuItem, { value: "Joseph" }, "Joseph")),
+            react_1["default"].createElement("select", { id: "schoolName", onChange: function (e) { return setSchoolName(e.currentTarget.value); } },
+                react_1["default"].createElement("option", { value: "" }, "Select a school"),
+                react_1["default"].createElement("option", { value: "Gregory" }, "St. Gregory's High School"),
+                react_1["default"].createElement("option", { value: "Xaviers" }, "Xaviers"),
+                react_1["default"].createElement("option", { value: "Joseph" }, "Joseph")),
             react_1["default"].createElement("br", null),
             react_1["default"].createElement("br", null),
             react_1["default"].createElement(pickers_1.MuiPickersUtilsProvider, { utils: date_fns_1["default"] },
@@ -85,4 +86,9 @@ var _EducationModal = function (_a) {
             react_1["default"].createElement(core_1.Button, { variant: "contained", color: "primary", onClick: function (e) { return submitHandler(e); } }, "Add Education")),
         react_1["default"].createElement(core_1.Button, { variant: "contained", color: "primary", onClick: function (e) { return setModalOpen(true); } }, "ADD EDUCATION")));
 };
-exports.EducationModal = react_redux_1.connect(null, { addEducationAction: EducationActions_1.addEducationAction })(_EducationModal);
+var mapStateToProps = function (state) {
+    return {
+        educations: state.EducationReducer
+    };
+};
+exports.EducationModal = react_redux_1.connect(mapStateToProps, { addEducationAction: EducationActions_1.addEducationAction })(_EducationModal);

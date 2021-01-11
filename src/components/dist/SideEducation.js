@@ -9,6 +9,7 @@ exports.SideEducation = function (_a) {
         return (react_1["default"].createElement(core_1.CardContent, null,
             react_1["default"].createElement("p", null, eachEducation.schoolName)));
     });
-    return (react_1["default"].createElement("p", null,
-        react_1["default"].createElement(core_1.Card, { variant: "outlined", raised: true }, EducationList)));
+    return (react_1["default"].createElement(react_1["default"].Fragment, null,
+        react_1["default"].createElement("p", null, "All Schools"),
+        react_1["default"].createElement(core_1.Card, { raised: true }, EducationList.slice(1, EducationList.length))));
 };

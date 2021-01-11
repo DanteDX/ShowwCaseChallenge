@@ -23,10 +23,10 @@ var _AddEducation = function (_a) {
             " to Add Education page"),
         react_1["default"].createElement(core_1.Button, { variant: "contained", onClick: function (e) { return handleClick(e); } }, "Clear Name"),
         react_1["default"].createElement(EducationModal_1.EducationModal, null),
-        react_1["default"].createElement(core_1.Grid, { container: true, spacing: 3, direction: "column" },
+        react_1["default"].createElement(core_1.Grid, { container: true, spacing: 3, direction: "row" },
             react_1["default"].createElement(core_1.Grid, { item: true, xs: 4 },
                 react_1["default"].createElement(SideEducation_1.SideEducation, { educations: educations })),
-            react_1["default"].createElement(core_1.Grid, { item: true, container: true, xs: 6, direction: "row" },
+            react_1["default"].createElement(core_1.Grid, { container: true, item: true, xs: 8, direction: "column" },
                 react_1["default"].createElement(DetailedEducation_1.DetailedEducation, { educations: educations })))));
 };
 var mapStateToProps = function (state) {

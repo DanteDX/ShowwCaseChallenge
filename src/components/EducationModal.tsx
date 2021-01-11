@@ -1,18 +1,20 @@
 import Modal from "react-modal";
 import React from "react";
 import 'date-fns';
-import { TextField, Button,MenuItem } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import { MuiPickersUtilsProvider, KeyboardDatePicker} from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import { connect } from "react-redux";
 import { addEducationAction } from "../actions/EducationActions";
 import { EducationInterface } from "../reducers/EducationReducer";
+import {StoreState} from "../reducers/index";
 
 interface EducationState{
   addEducationAction: Function;
+  educations: EducationInterface[];
 }
 
-const _EducationModal:React.FunctionComponent<EducationState> = ({addEducationAction}) => {
+const _EducationModal:React.FunctionComponent<EducationState> = ({addEducationAction,educations}) => {
   
   const [modalOpen, setModalOpen] = React.useState(false);
   const customStyles = {
@@ -40,7 +42,7 @@ const _EducationModal:React.FunctionComponent<EducationState> = ({addEducationAc
   };
   const submitHandler = (e?: React.MouseEvent<HTMLElement>) => {
     const details:EducationInterface = {
-      id: 10,
+      id: educations.length + 1,
       country: countryName,
       schoolName,
       degree: Degree,
@@ -51,7 +53,7 @@ const _EducationModal:React.FunctionComponent<EducationState> = ({addEducationAc
       description: ""
     };
     addEducationAction(details);
-    alert('Submitted');
+    // alert('Submitted');
     setModalOpen(false);
   }
   return (
@@ -62,11 +64,12 @@ const _EducationModal:React.FunctionComponent<EducationState> = ({addEducationAc
       >
           <TextField required color="primary" variant="outlined" onChange={e => setCountryName(e.currentTarget.value) } type="text" label="Country Name" />
         <br /><br />
-        <TextField helperText="Please select your school" color="primary" variant="outlined" select required label="Select a school" onChange={e => setSchoolName(e.currentTarget.value)}>
-          <MenuItem value="Gregory">St. Gregory's High School</MenuItem>
-          <MenuItem value="Xaviers">Xaviers</MenuItem>
-          <MenuItem value="Joseph">Joseph</MenuItem>
-        </TextField>
+        <select id="schoolName" onChange={e => setSchoolName(e.currentTarget.value)}>
+          <option value="">Select a school</option>
+          <option value="Gregory">St. Gregory's High School</option>
+          <option value="Xaviers">Xaviers</option>
+          <option value="Joseph">Joseph</option>
+        </select>
           <br /><br/>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
@@ -115,4 +118,9 @@ const _EducationModal:React.FunctionComponent<EducationState> = ({addEducationAc
   )
 }
 
-export const EducationModal = connect(null, { addEducationAction })(_EducationModal);
+const mapStateToProps = (state: StoreState) => {
+  return {
+    educations: state.EducationReducer
+  }
+}
+export const EducationModal = connect(mapStateToProps, { addEducationAction })(_EducationModal);
