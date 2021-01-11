@@ -7,8 +7,11 @@ require("date-fns");
 var core_1 = require("@material-ui/core");
 var pickers_1 = require("@material-ui/pickers");
 var date_fns_1 = require("@date-io/date-fns");
-exports.EducationModal = function () {
-    var _a = react_1["default"].useState(false), modalOpen = _a[0], setModalOpen = _a[1];
+var react_redux_1 = require("react-redux");
+var EducationActions_1 = require("../actions/EducationActions");
+var _EducationModal = function (_a) {
+    var addEducationAction = _a.addEducationAction;
+    var _b = react_1["default"].useState(false), modalOpen = _b[0], setModalOpen = _b[1];
     var customStyles = {
         content: {
             top: '50%',
@@ -19,18 +22,34 @@ exports.EducationModal = function () {
             transform: 'translate(-50%, -50%)'
         }
     };
-    var _b = react_1["default"].useState(""), countryName = _b[0], setCountryName = _b[1];
-    var _c = react_1["default"].useState(""), schoolName = _c[0], setSchoolName = _c[1];
-    var _d = react_1["default"].useState(""), fieldName = _d[0], setFieldName = _d[1];
-    var _e = react_1["default"].useState(""), Grade = _e[0], setGrade = _e[1];
-    var _f = react_1["default"].useState(""), Degree = _f[0], setDegree = _f[1];
-    var _g = react_1["default"].useState(new Date()), selectedStartingDate = _g[0], setSelectedStartingDate = _g[1];
-    var _h = react_1["default"].useState(new Date()), selectedEndingDate = _h[0], setSelectedEndingDate = _h[1];
+    var _c = react_1["default"].useState(""), countryName = _c[0], setCountryName = _c[1];
+    var _d = react_1["default"].useState(""), schoolName = _d[0], setSchoolName = _d[1];
+    var _e = react_1["default"].useState(""), fieldName = _e[0], setFieldName = _e[1];
+    var _f = react_1["default"].useState(""), Grade = _f[0], setGrade = _f[1];
+    var _g = react_1["default"].useState(""), Degree = _g[0], setDegree = _g[1];
+    var _h = react_1["default"].useState(new Date()), selectedStartingDate = _h[0], setSelectedStartingDate = _h[1];
+    var _j = react_1["default"].useState(new Date()), selectedEndingDate = _j[0], setSelectedEndingDate = _j[1];
     var handleStartingDateChange = function (date) {
         setSelectedStartingDate(date);
     };
     var handleEndingDateChange = function (date) {
         setSelectedEndingDate(date);
+    };
+    var submitHandler = function (e) {
+        var details = {
+            id: 10,
+            country: countryName,
+            schoolName: schoolName,
+            degree: Degree,
+            fieldOfStudy: fieldName,
+            startYear: selectedStartingDate,
+            endYear: selectedEndingDate,
+            grade: Grade,
+            description: ""
+        };
+        addEducationAction(details);
+        alert('Submitted');
+        setModalOpen(false);
     };
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement(react_modal_1["default"], { isOpen: modalOpen, style: customStyles },
@@ -62,6 +81,8 @@ exports.EducationModal = function () {
             react_1["default"].createElement(core_1.TextField, { required: true, color: "primary", variant: "outlined", type: "text", label: "Grade", onChange: function (e) { return setGrade(e.currentTarget.value); } }),
             react_1["default"].createElement("br", null),
             react_1["default"].createElement("br", null),
-            react_1["default"].createElement(core_1.Button, { variant: "contained", color: "primary", onClick: function (e) { return setModalOpen(false); } }, "Add Education")),
+            react_1["default"].createElement(core_1.Button, { variant: "contained", color: "secondary", onClick: function (e) { return setModalOpen(false); } }, "Cancel"),
+            react_1["default"].createElement(core_1.Button, { variant: "contained", color: "primary", onClick: function (e) { return submitHandler(e); } }, "Add Education")),
         react_1["default"].createElement("button", { onClick: function (e) { return setModalOpen(true); } }, "Open Modal")));
 };
+exports.EducationModal = react_redux_1.connect(null, { addEducationAction: EducationActions_1.addEducationAction })(_EducationModal);
