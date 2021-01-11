@@ -7,8 +7,8 @@ export interface EducationInterface{
   schoolName: string;
   degree: string;
   fieldOfStudy: string;
-  startYear: (Date | string | null);
-  endYear: (Date | string | null);
+  startYear: Date;
+  endYear: Date;
   grade: string;
   description: string;
 }
@@ -19,8 +19,8 @@ let initialState = [{
   schoolName: "",
   degree: "",
   fieldOfStudy: "",
-  startYear: "",
-  endYear: "",
+  startYear: new Date(),
+  endYear: new Date(),
   grade: "",
   description: "",
 }];
