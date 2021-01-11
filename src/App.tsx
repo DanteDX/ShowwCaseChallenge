@@ -2,10 +2,17 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Landing } from "./components/Landing";
 import {AddEducation} from "./components/AddEducation";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
+const darkTheme = createMuiTheme({
+  palette: {
+    type: "dark"
+  }
+});
 function App():JSX.Element {
   return (
-    <Router>
+    <ThemeProvider theme={darkTheme}>
+      <Router>
       <div className="App">
         <Switch>
           <Route exact path='/' component={Landing} />
@@ -13,6 +20,7 @@ function App():JSX.Element {
         </Switch>
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 
