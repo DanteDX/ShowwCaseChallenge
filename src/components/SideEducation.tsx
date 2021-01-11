@@ -2,7 +2,7 @@ import React from "react";
 import { EducationInterface } from "../reducers/EducationReducer";
 import { Card,CardContent } from "@material-ui/core";
 
-interface SideEducationState{
+export interface SideEducationState{
   educations: EducationInterface[];
 }
 
