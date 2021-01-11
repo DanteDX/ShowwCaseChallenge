@@ -11,6 +11,7 @@ exports.EducationReducer = void 0;
 var ActionsTypes_1 = require("../actions/ActionsTypes");
 var initialState = [{
         id: 0,
+        country: "",
         schoolName: "",
         degree: "",
         fieldOfStudy: "",

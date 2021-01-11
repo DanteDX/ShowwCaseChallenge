@@ -15,6 +15,7 @@ exports.deleteEducationAction = exports.addEducationAction = void 0;
 var ActionsTypes_1 = require("./ActionsTypes");
 var dummyState = {
     id: 0,
+    country: "",
     schoolName: "",
     degree: "",
     fieldOfStudy: "",

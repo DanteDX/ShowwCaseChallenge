@@ -3,7 +3,8 @@ import { ActionTypes } from "./ActionsTypes";
 import { EducationInterface } from "../reducers/EducationReducer";
 
 let dummyState = {
-  id:0,
+  id: 0,
+  country:"",
   schoolName: "",
   degree: "",
   fieldOfStudy: "",
