@@ -14,7 +14,7 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Router>
-      <div className="App">
+      <div className="App" data-test="mainApp">
         <Switch>
           <Route exact path='/' component={Landing} />
           <Route exact path="/addEducation" component={AddEducation} />
