@@ -9,6 +9,7 @@ import { EducationModal } from "./EducationModal";
 import { EducationInterface } from "../reducers/EducationReducer";
 import { SideEducation } from "./SideEducation";
 import { DetailedEducation } from "./DetailedEducation";
+import {AddEducationElement} from "../elements/AddEducationElement";
 
 
 export interface AddEducationProps extends RouteComponentProps{
@@ -29,10 +30,13 @@ const _AddEducation: React.FunctionComponent<AddEducationProps> = ({ history, cl
   }
   return (
     <div>
-      Add Education page
-      <h4>Welcome {nameState.name} to Add Education page</h4>
-      <Button variant="contained" onClick={e => handleClick(e)}>Reset Name</Button>
-      <EducationModal />
+      <AddEducationElement>
+        <h4>Add Education Page</h4>
+        <h4>Welcome {nameState.name} to Add Education page</h4>
+        <Button variant="contained" onClick={e => handleClick(e)}>Reset Name</Button>
+        <EducationModal />
+      </AddEducationElement>
+      
       <Grid container spacing={3} direction="row">
         <Grid item xs={4}>
           <SideEducation educations={educations}/>
